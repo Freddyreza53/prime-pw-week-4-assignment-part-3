@@ -50,6 +50,16 @@ console.log('***** Cart Functions *****');
 let basket = [];
 const maxItems = 5;
 
+function addItem(item) {
+  if (isFull()) {
+    return false;
+  }
+  else {
+    basket.push(item);
+    return true;
+  }
+}
+
 function empty() {
   while (0 < basket.length) {
     basket.pop();
@@ -65,19 +75,20 @@ function isFull() {
   }
 }
 
-function addItem(item) {
-  if (isFull()) {
-    return false;
-  }
-  else {
-    basket.push(item);
-    return true;
-  }
-}
-
 function listItems() {
   for (let i = 0; i < basket.length; i++) {
     console.log(`${basket[i]}`);
+  }
+}
+
+function removeItem(item) {
+  let removedItem;
+  if (basket.indexOf(item) >= 0){
+    removedItem = basket.splice(basket.indexOf(item), 1);
+    return removedItem;
+  }
+  else {
+    return 'null';
   }
 }
 
@@ -88,9 +99,10 @@ console.log('Adding pop', addItem('pop'));
 console.log('Adding popcorn', addItem('popcorn'));
 console.log(isFull());
 console.log('Adding cereal', addItem('cereal'));
+console.log(removeItem('cheese'));
 console.log('Adding eggs', addItem('eggs'));
 console.log(isFull());
-console.log('Adding bread', addItem('bread'));
+console.log(removeItem('bread'));
 console.log(`Basket is now ${basket}`);
 listItems()
 empty()
