@@ -64,6 +64,7 @@ function empty() {
   while (0 < basket.length) {
     basket.pop();
   }
+  return console.log(`Basket has been emptied.`);;
 }
 
 function isFull() {
@@ -93,17 +94,28 @@ function removeItem(item) {
 }
 
 console.log(`Basket is ${basket}`);
-console.log('Adding apples', addItem('apples'));
-console.log('Adding cheese', addItem('cheese'));
-console.log('Adding pop', addItem('pop'));
-console.log('Adding popcorn', addItem('popcorn'));
-console.log(isFull());
-console.log('Adding cereal', addItem('cereal'));
-console.log(removeItem('cheese'));
-console.log('Adding eggs', addItem('eggs'));
-console.log(isFull());
+
+console.log('Adding apples  (expect true) ', addItem('apples'));
+console.log('Adding cheese  (expect true) ', addItem('cheese'));
+console.log('Adding pop     (expect true) ', addItem('pop'));
+console.log('Adding popcorn (expect true) ', addItem('popcorn'));
+console.log(`Is the basket full? (expect false): ${isFull()}`);
+
+console.log('Adding cereal  (expect true) ', addItem('cereal'));
+console.log('Adding bananas (expect false)', addItem('bananas'));
+
+console.log(`${removeItem('cheese')} has been removed.`);
+
+console.log('Adding eggs    (expect true) ', addItem('eggs'));
+
+console.log(`Is the basket full?  (expect true): ${isFull()}`);
 console.log(removeItem('bread'));
 console.log(`Basket is now ${basket}`);
+
+console.log(`----- Items in basket -----`);
 listItems()
+console.log(`---------------------------`);
+
 empty()
+
 console.log(`Basket is ${basket}`);
